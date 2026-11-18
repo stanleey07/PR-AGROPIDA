@@ -115,3 +115,13 @@ Código bajo la [Licencia MIT](LICENSE). Las fuentes y fotografías de terceros,
 **v1.0.0 (entrega académica)**. Ver [notas de versión](docs/RELEASE_NOTES.md). Crear un GitHub Release y adjuntar un video de demostración es opcional.
 
 **AGROPIDA — Más que gestionar caballos, es impulsar la excelencia equina.**
+
+## 📑 Paper académico IEEE
+
+**Autor:** Alan Stanley Villalobos Bernal. Se preparó un manuscrito científico a doble columna con resumen y abstract, justificación, marco teórico, estado del arte, requisitos, historias de usuario, diagramas, complejidad algorítmica, implementación, hipótesis, metodología, resultados, análisis, límites y referencias IEEE.
+
+- [Ver fuente LaTeX del paper](docs/paper/AGROPIDA_Paper_IEEE.tex)
+- [Ver los **5 KPIs de negocio y 5 KPIs tecnológicos**](docs/paper/KPIs.md)
+- [Instrucciones para compilar el PDF](docs/paper/README.md)
+
+**Transparencia científica:** los diez KPI cuentan con metas y fórmulas, pero todavía no tienen mediciones de campo. Solo se han aprobado 5 pruebas estructurales de 5 ejecutadas. Las extensiones BKT y mochila 0/1 están propuestas y no implementadas en esta versión.
