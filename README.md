@@ -106,7 +106,7 @@ Para desplegar en Netlify, usa la **raíz del repositorio** como carpeta de publ
 
 ## 👥 Autores
 **Equipo AGROPIDA — Bogotá D. C., Colombia.**  
-**Pendiente de completar:** nombres de todos los integrantes, institución, asignatura y responsabilidades.
+**Pendiente de completar:** ALAN STANLEY VILLALOBOS BERNAL ~ DDYA ~ECI.
 
 ## 📄 Licencia
 Código bajo la [Licencia MIT](LICENSE). Las fuentes y fotografías de terceros, si se usan, conservan sus condiciones de licencia.
