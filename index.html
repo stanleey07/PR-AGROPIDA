@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10271c">
+<meta name="description" content="AGROPIDA: plataforma de gestión y trazabilidad del caballo de Paso Fino colombiano.">
+<title>AGROPIDA — Excelencia Equina</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="src/styles.css">
+
+</head>
+
+<body>
+
+<!-- ACCESO -->
+<section id="authScreen">
+  <div class="auth-visual">
+    <div class="brand">
+      <div class="brand-mark agropida-logo-mark"><img src="assets/logo-agropida.png" alt="Logo oficial de AGROPIDA: caballo dorado sobre la letra A" /></div>
+      <div>
+        <div class="brand-name">AGROPIDA</div>
+        <span class="brand-subtitle">EXCELENCIA EQUINA</span>
+      </div>
+    </div>
+
+    <div class="visual-copy">
+      <div class="eyebrow">Tradición · Ciencia · Futuro</div>
+      <h1>La excelencia<br>se reconoce<br>en <em>cada paso.</em></h1>
+      <p>Un espacio para quienes entienden que el caballo de Paso Fino colombiano representa mucho más que una raza: representa historia, disciplina y legado.</p>
+    </div>
+
+    <div class="visual-bottom">
+      <span>GESTIÓN EQUINA CON PROPÓSITO</span>
+      <span>COLOMBIA · 2026</span>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <div class="auth-content">
+      <div class="brand mobile-brand">
+        <div class="brand-mark agropida-logo-mark"><img src="assets/logo-agropida.png" alt="Logo oficial de AGROPIDA: caballo dorado sobre la letra A" /></div>
+        <div>
+          <div class="brand-name">AGROPIDA</div>
+          <span class="brand-subtitle">EXCELENCIA EQUINA</span>
+        </div>
+      </div>
+
+      <div class="auth-heading">
+        <div class="eyebrow">Tu espacio ecuestre</div>
+        <h2 id="authTitle">Bienvenido<br>de nuevo.</h2>
+        <p id="authDescription">Accede a tu entorno de gestión y descubre una nueva forma de cuidar cada detalle.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" type="button" onclick="setAuthMode('login')">Iniciar sesión</button>
+        <button class="auth-tab" id="registerTab" type="button" onclick="setAuthMode('register')">Crear cuenta</button>
+      </div>
+
+      <div id="authMessage" class="message hidden"></div>
+
+      <form id="authForm">
+        <div class="field hidden" id="nameField">
+          <label for="fullName">Nombre completo</label>
+          <input id="fullName" type="text" autocomplete="name" placeholder="Tu nombre y apellido">
+        </div>
+
+        <div class="field">
+          <label for="username">Correo electrónico</label>
+          <input id="username" type="email" autocomplete="username" placeholder="nombre@correo.com" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <div class="input-wrap">
+            <input id="password" type="password" autocomplete="current-password" placeholder="Ingresa tu contraseña" minlength="6" required>
+            <button class="password-toggle" type="button" onclick="togglePassword()">MOSTRAR</button>
+          </div>
+        </div>
+
+        <div class="field hidden" id="confirmField">
+          <label for="confirmPassword">Confirmar contraseña</label>
+          <input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Repite tu contraseña" minlength="6">
+        </div>
+
+        <div class="auth-meta" id="authMeta">
+          <label class="checkbox-line"><input type="checkbox" id="rememberMe"> Recordarme</label>
+          <button class="text-button" type="button" onclick="showToast('Esta demostración no envía correos para recuperar contraseñas.')">¿Olvidaste tu contraseña?</button>
+        </div>
+
+        <button class="primary-button" type="submit" id="authSubmit">ENTRAR A AGROPIDA &nbsp; ↗</button>
+      </form>
+
+      <div class="auth-legal">
+        Al continuar aceptas las condiciones de uso de la plataforma.<br>
+        <span>Una experiencia dedicada al caballo de Paso Fino colombiano.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APLICACIÓN -->
+<section id="appScreen" class="hidden">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark agropida-logo-mark"><img src="assets/logo-agropida.png" alt="Logo oficial de AGROPIDA: caballo dorado sobre la letra A" /></div>
+      <div>
+        <div class="brand-name">AGROPIDA</div>
+        <span class="brand-subtitle">EXCELENCIA EQUINA</span>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div class="status-pill"><span class="status-dot"></span> ENTORNO DE DEMOSTRACIÓN</div>
+      <button class="logout-button" type="button" onclick="logout()">Cerrar sesión ↗</button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-label">Espacio de trabajo</div>
+
+      <button class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
+        <span class="nav-icon">⌂</span> Resumen
+      </button>
+      <button class="nav-item" data-page="horses" onclick="navigate('horses')">
+        <span class="nav-icon">♞</span> Ejemplares
+      </button>
+      <button class="nav-item" data-page="registerHorse" onclick="navigate('registerHorse')">
+        <span class="nav-icon">＋</span> Registrar ejemplar
+      </button>
+      <button class="nav-item" data-page="records" onclick="navigate('records')">
+        <span class="nav-icon">◷</span> Historial
+      </button>
+      <button class="nav-item" data-page="care" onclick="navigate('care')">
+        <span class="nav-icon">✓</span> Cuidados
+      </button>
+
+      <div class="sidebar-label">Tecnología</div>
+      <button class="nav-item" data-page="intelligence" onclick="navigate('intelligence')">
+        <span class="nav-icon">✧</span> Agropida Intelligence
+      </button>
+
+      <div class="sidebar-label">Información</div>
+      <button class="nav-item" data-page="contact" onclick="navigate('contact')">
+        <span class="nav-icon">◇</span> Contacto
+      </button>
+
+      <div class="sidebar-bottom">
+        <strong>El valor está en el detalle.</strong>
+        <p>Organiza la información de tus ejemplares y construye un historial de cuidado con propósito.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- RESUMEN -->
+      <section class="page active" id="page-dashboard">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Panel de control</div>
+            <h1>Un legado en cada paso.</h1>
+            <p>Bienvenido a tu espacio de gestión equina. Aquí comienza cada historia.</p>
+          </div>
+          <button class="outline-button" onclick="navigate('registerHorse')">＋ Registrar ejemplar</button>
+        </div>
+
+        <div class="welcome-banner">
+          <div class="welcome-copy">
+            <div class="eyebrow">AGROPIDA · PASO FINO COLOMBIANO</div>
+            <h2>Tradición que evoluciona.<br>Excelencia que permanece.</h2>
+            <p>Reúne la información de tus ejemplares, registra sus cuidados y conserva cada detalle de su evolución.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-label">Ejemplares registrados</span><span class="stat-icon">♞</span></div>
+            <div class="stat-number" id="statHorses">03</div>
+            <div class="stat-foot">En el registro de demostración</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-label">Eventos registrados</span><span class="stat-icon">◷</span></div>
+            <div class="stat-number" id="statRecords">04</div>
+            <div class="stat-foot">Cuidados e historial</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-label">Cuidados pendientes</span><span class="stat-icon">✓</span></div>
+            <div class="stat-number" id="statCare">02</div>
+            <div class="stat-foot">Elementos por revisar</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-label">Perfil de gestión</span><span class="stat-icon">◇</span></div>
+            <div class="stat-number" style="font-size:25px">Activo</div>
+            <div class="stat-foot">Sesión de demostración</div>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <div class="panel">
+            <div class="panel-heading">
+              <h3>Ejemplares destacados</h3>
+              <button class="text-button" onclick="navigate('horses')">Ver colección ↗</button>
+            </div>
+            <div class="horse-mini-list" id="featuredHorses"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-heading">
+              <h3>Actividad reciente</h3>
+              <span>HISTORIAL</span>
+            </div>
+            <div class="event-list" id="recentEvents"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EJEMPLARES -->
+      <section class="page" id="page-horses">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Colección equina</div>
+            <h1>Los protagonistas.</h1>
+            <p>Consulta los perfiles de los ejemplares de la colección.</p>
+          </div>
+          <button class="outline-button" onclick="navigate('registerHorse')">＋ Nuevo ejemplar</button>
+        </div>
+
+        <div class="field" style="max-width:420px">
+          <input id="horseSearch" type="search" placeholder="Buscar por nombre, registro o propietario..." oninput="renderHorses()">
+        </div>
+
+        <div class="horse-grid" id="horseGrid"></div>
+      </section>
+
+      <!-- REGISTRAR EJEMPLAR -->
+      <section class="page" id="page-registerHorse">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Nuevo perfil</div>
+            <h1>Registrar ejemplar.</h1>
+            <p>Crea una ficha inicial para organizar su información básica.</p>
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <form id="horseForm">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="horseName">Nombre del ejemplar *</label>
+                <input id="horseName" required placeholder="Nombre registrado">
+              </div>
+
+              <div class="form-field">
+                <label for="horseCode">Número de registro *</label>
+                <input id="horseCode" required placeholder="Ej. PF-2026-004">
+              </div>
+
+              <div class="form-field">
+                <label for="horseAge">Edad (años)</label>
+                <input id="horseAge" type="number" min="0" max="50" placeholder="Ej. 5">
+              </div>
+
+              <div class="form-field">
+                <label for="horseSex">Sexo</label>
+                <select id="horseSex">
+                  <option value="No especificado">Seleccionar</option>
+                  <option value="Macho">Macho</option>
+                  <option value="Hembra">Hembra</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="horseColor">Color</label>
+                <input id="horseColor" placeholder="Ej. Castaño">
+              </div>
+
+              <div class="form-field">
+                <label for="horseOwner">Propietario o responsable</label>
+                <input id="horseOwner" placeholder="Nombre del responsable">
+              </div>
+
+              <div class="form-field full">
+                <label for="horsePhotoFile">Fotografía del ejemplar</label>
+                <input id="horsePhotoFile" type="file" accept="image/*">
+                <small class="photo-help">Selecciona una foto desde tu celular o computador. JPG, PNG o WEBP.</small>
+                <div class="horse-photo-preview" id="horsePhotoPreview" aria-live="polite">
+                  <span>La fotografía que elijas aparecerá aquí</span>
+                </div>
+                <label for="horsePhoto">O pega un enlace de imagen (opcional)</label>
+                <input id="horsePhoto" type="url" placeholder="https://...">
+              </div>
+
+              <div class="form-field full">
+                <label for="horseNotes">Observaciones iniciales</label>
+                <textarea id="horseNotes" placeholder="Información relevante del ejemplar..."></textarea>
+              </div>
+            </div>
+
+            <button class="form-submit" type="submit">GUARDAR PERFIL ↗</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- HISTORIAL -->
+      <section class="page" id="page-records">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Trazabilidad</div>
+            <h1>La historia importa.</h1>
+            <p>Consulta los eventos registrados para cada ejemplar.</p>
+          </div>
+          <button class="outline-button" onclick="navigate('care')">＋ Añadir evento</button>
+        </div>
+
+        <div class="record-list" id="recordList"></div>
+      </section>
+
+      <!-- CUIDADOS -->
+      <section class="page" id="page-care">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Bienestar y seguimiento</div>
+            <h1>Cada detalle cuenta.</h1>
+            <p>Registra actividades de salud, alimentación, entrenamiento y bienestar.</p>
+          </div>
+        </div>
+
+        <div class="form-panel" style="margin-bottom:25px">
+          <form id="careForm">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="careHorse">Ejemplar *</label>
+                <select id="careHorse" required></select>
+              </div>
+
+              <div class="form-field">
+                <label for="careType">Tipo de evento *</label>
+                <select id="careType" required>
+                  <option value="Salud">Salud</option>
+                  <option value="Alimentación">Alimentación</option>
+                  <option value="Entrenamiento">Entrenamiento</option>
+                  <option value="Bienestar">Bienestar</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="careDate">Fecha *</label>
+                <input id="careDate" type="date" required>
+              </div>
+
+              <div class="form-field">
+                <label for="careStatus">Estado</label>
+                <select id="careStatus">
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="Completado">Completado</option>
+                </select>
+              </div>
+
+              <div class="form-field full">
+                <label for="careDescription">Descripción *</label>
+                <textarea id="careDescription" required placeholder="Describe el evento, actividad o seguimiento..."></textarea>
+              </div>
+            </div>
+
+            <button class="form-submit" type="submit">REGISTRAR EVENTO ↗</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h3>Seguimiento de cuidados</h3>
+            <span>EVENTOS</span>
+          </div>
+          <div class="record-list" id="careList"></div>
+        </div>
+      </section>
+
+      <!-- IA -->
+      <section class="page" id="page-intelligence">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Tecnología aplicada al sector equino</div>
+            <h1>Conocimiento con propósito.</h1>
+            <p>Un espacio conceptual para consultar y organizar información equina.</p>
+          </div>
+        </div>
+
+        <div class="ai-card">
+          <div class="ai-orb"></div>
+          <div class="eyebrow">AGROPIDA INTELLIGENCE</div>
+          <h2>Los datos cuentan historias.<br>La inteligencia ayuda a leerlas.</h2>
+          <p>Consulta información registrada, organiza observaciones y prepara preguntas para el análisis de tus ejemplares. La conexión con un modelo de IA local se integrará en la siguiente etapa.</p>
+        </div>
+
+        <div class="ai-chat">
+          <label for="aiQuestion">¿Qué te gustaría consultar?</label>
+          <textarea id="aiQuestion" placeholder="Ejemplo: ¿Qué información debería registrar después de una sesión de entrenamiento?"></textarea>
+          <button class="form-submit" type="button" onclick="askDemoAI()">CONSULTAR AGROPIDA INTELLIGENCE ↗</button>
+          <div id="aiResponse" class="ai-response hidden"></div>
+          <p class="section-note">Esta demostración no se conecta todavía a LM Studio ni genera respuestas con un modelo de inteligencia artificial real. La respuesta que aparece es orientativa.</p>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="page" id="page-contact">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Hablemos</div>
+            <h1>Detrás de cada gran paso.</h1>
+            <p>Estamos en Bogotá D.C., Colombia. Conoce nuestros canales de contacto.</p>
+          </div>
+        </div>
+
+        <div class="welcome-banner" style="min-height:200px">
+          <div class="welcome-copy">
+            <div class="eyebrow">AGROPIDA · COLOMBIA</div>
+            <h2>Una nueva perspectiva<br>de la gestión equina.</h2>
+            <p>Un proyecto enfocado en la organización de información y el seguimiento del caballo de Paso Fino colombiano.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <div class="contact-icon">✉</div>
+            <h3>Correo electrónico</h3>
+            <p><a href="mailto:alanstanley1017@gmail.com">alanstanley1017@gmail.com</a></p>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-icon">◎</div>
+            <h3>Instagram</h3>
+            <p><a href="https://www.instagram.com/agropida.co/" target="_blank" rel="noopener noreferrer">@agropida.co</a></p>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-icon">♞</div>
+            <h3>Comunidad equina</h3>
+            <p>Un espacio dedicado a propietarios, criadores, cuidadores y amantes del Paso Fino colombiano.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 AGROPIDA · EXCELENCIA EQUINA</span>
+        <span>Versión visual de demostración · Paso Fino colombiano</span>
+      </footer>
+    </main>
+  </div>
+</section>
+
+<div id="horseDetailModal" class="premium-modal hidden" role="dialog" aria-modal="true" aria-label="Ficha del ejemplar" onclick="if(event.target===this)closeHorseDetail()"><div class="premium-dialog"><button type="button" class="premium-close" onclick="closeHorseDetail()" aria-label="Cerrar ficha">×</button><div id="horseDetailContent"></div></div></div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+<script src="src/app.js"></script>
+</body>
+</html>

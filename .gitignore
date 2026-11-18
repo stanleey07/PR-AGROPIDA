@@ -1,0 +1,30 @@
+# Secretos, archivos de configuración y claves
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*secrets*
+# Archivos generados y dependencias
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.cache/
+coverage/
+dist/
+build/
+.tmp/
+*.log
+.DS_Store
+Thumbs.db
+# Bases y exportaciones con información privada
+*.sqlite
+*.sqlite3
+*.db
+private-data/
+exports/
