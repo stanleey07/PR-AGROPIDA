@@ -6,7 +6,7 @@
 *Vista ilustrativa recreada con el fondo y textos originales. La captura real del navegador se agrega en `docs/capturas/` cuando esté disponible.*
 
 ## 🌐 Demostración
-**[Abrir AGROPIDA en Netlify](https://courageous-bubblegum-7af214.netlify.app/)**
+**[Abrir AGROPIDA en Netlify](https://agropida.netlify.app/)**
 
 > Verificar su acceso en una ventana de incógnito antes de entregar el enlace.
 
